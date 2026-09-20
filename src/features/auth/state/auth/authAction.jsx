@@ -13,3 +13,16 @@ export const loginEmployee = createAsyncThunk(
     }   
     }
 );
+
+export const currentLoggedEmployee = createAsyncThunk(
+  'auth/me',
+  async (_, thunkApi) => {
+    try {
+        let res = await axiosInstance.get('/auth/me');
+        console.log(res.data);
+        return res.data.user;
+    } catch (error) {
+        return thunkApi.rejectWithValue(error);
+    }   
+    }
+);

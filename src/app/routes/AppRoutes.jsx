@@ -1,41 +1,65 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import AuthLayout from '../layouts/AuthLayout.jsx'
-import DashboardLayout from '../layouts/DashboardLayout.jsx'
-import Login from '../../features/auth/ui/pages/Login.jsx'
-import Register from '../../features/auth/ui/pages/Register.jsx'
-import Home from '../../features/dashboard/ui/pages/Home.jsx'
+import React, { useEffect } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import AuthLayout from "../layouts/AuthLayout";
+import Login from "../../features/auth/ui/pages/Login";
+import Register from "../../features/auth/ui/pages/Register";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Home from "../../features/dashboard/ui/pages/Home";
+import { useDispatch } from "react-redux";
+import { currentLoggedEmployee } from "../../features/auth/state/auth/authAction";
+import PublicRoute from "../protectedRoutes/PublicRoute";
+import ProtectedRoute from "../protectedRoutes/ProtectedRoute";
 
 const AppRoutes = () => {
+  let dispatch = useDispatch();
 
-    let router = createBrowserRouter([
+  useEffect(() => {
+    (() => {
+      dispatch(currentLoggedEmployee());
+    })();
+  }, []);
+
+  let router = createBrowserRouter([
+    {
+      path: "/",
+      element: <PublicRoute />,
+      children: [
         {
-            path: '/',
-            element: <AuthLayout />,
-            children: [
-                {
-                    path: "",
-                    element: <Login />
-                },
-                {
-                    path: "register",
-                    element: <Register />
-                }
-            ]
+          path: "",
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
         },
+      ],
+    },
+
+    {
+      path: "/home",
+      element: <ProtectedRoute />,
+      children: [
         {
-            path: "/home",
-            element: <DashboardLayout />,
-            children: [
-                {
-                    path: "",
-                    element: <Home />
-                }
-            ]
-        }
-    ]);
+          path: "",
+          element: <DashboardLayout />,
+          children: [
+           {
+            path: "",
+            element: <Home />,
+           }
+          ],
+        },
+      ],
+    },
+  ]);
 
-    return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};
 
-export default AppRoutes
+export default AppRoutes;
