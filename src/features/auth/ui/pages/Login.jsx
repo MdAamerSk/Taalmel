@@ -29,7 +29,7 @@ const Login = () => {
             <Cloud size={30} className="text-white" />
           </div>
 
-          <h1 className="text-white text-4xl font-bold mt-6">team-sync</h1>
+          <h1 className="text-white text-4xl font-bold mt-6">Taalmel</h1>
 
           <p className="text-gray-400 mt-2 text-lg">
             Sign in to your workspace

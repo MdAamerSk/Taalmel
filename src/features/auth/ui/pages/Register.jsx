@@ -26,7 +26,7 @@ const Register = () => {
           {/* Content */}
           <div className="relative z-10 flex flex-col justify-between p-12 w-full">
             {/* Logo */}
-            <h1 className="text-3xl font-bold tracking-wide">team-sync</h1>
+            <h1 className="text-3xl font-bold tracking-wide">Taalmel</h1>
 
             {/* Bottom Content */}
             <div className="space-y-8">
@@ -250,7 +250,7 @@ const Register = () => {
 
       {/* Footer */}
       <footer className="border-t border-white/10 px-8 py-6 flex flex-col lg:flex-row items-center justify-between gap-5 text-sm text-gray-400">
-        <h2 className="text-2xl font-bold text-white">team-sync</h2>
+        <h2 className="text-2xl font-bold text-white">Taalmel</h2>
 
         <div className="flex items-center gap-8">
           <p className="hover:text-white cursor-pointer">Privacy Policy</p>
@@ -262,7 +262,7 @@ const Register = () => {
           <p className="hover:text-white cursor-pointer">System Status</p>
         </div>
 
-        <p>© 2024 team-sync. Enterprise Intelligence Platforms.</p>
+        <p>© 2026 Taalmel. Enterprise Intelligence Platforms.</p>
       </footer>
     </div>
   );
